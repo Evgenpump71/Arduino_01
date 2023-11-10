@@ -1,6 +1,6 @@
 # Arduino_01
 Светофор
-~~~ c++
+```c++
 int led_red = 2;
 int led_yellow = 3;
 int led_green = 4;
@@ -25,12 +25,10 @@ void loop()
   delay(700);
   digitalWrite(led_yellow, LOW);
 }
-~~~
+```
 
 Кнопка
-
-~~~ c++
-
+```c++
 #define BUTTON 0
 #define LED1 7
 void setup() {
@@ -53,9 +51,9 @@ void loop() {
   }
 
 }
-~~~
+```
 Термометр
-~~~ c++
+``` c++
     // библиотека для работы с аналоговым термометром (Troyka-модуль)
     #include <TroykaThermometer.h>
     
@@ -89,9 +87,9 @@ void loop() {
 
     
     }
-~~~
+```
 Термометр+лампочка+индикатор
-~~~ c++
+``` c++
  // библиотека для работы с аналоговым термометром (Troyka-модуль)
     #include <TroykaThermometer.h>
     #include <QuadDisplay.h>
@@ -134,6 +132,6 @@ void loop() {
     
     }
 
-~~~
+```
 
 
