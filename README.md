@@ -133,5 +133,73 @@ void loop() {
     }
 
 ```
+Сервопривод: вращение с потенциометром
+``` C++
+#include <Servo.h>
+#define PTR_PIN A0
+
+
+
+Servo myservo;  // create servo object to control a servo
+
+
+int potpin = 0;  // analog pin used to connect the potentiometer
+
+int val;    // variable to read the value from the analog pin
+
+
+void setup() {
+
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+  pinMode(PTR_PIN, INPUT);
+}
+
+
+void loop() {
+  val = analogRead(PTR_PIN);
+  val = analogRead(potpin);            // reads the value of the potentiometer (value between 0 and 1023)
+
+  val = map(val, 0, 1023, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
+
+  myservo.write(val);                  // sets the servo position according to the scaled value
+
+  delay(15);                           // waits for the servo to get there
+
+}
+```
+Вращение двух моторов
+
+``` c++
+    // подключите один мотор к клемме: M1+ и M1-
+    // а второй к клемме: M2+ и M2-
+    // Motor shield использует четыре контакта 4, 5, 6, 7 для управления моторами 
+    // 4 и 7 — для направления, 5 и 6 — для скорости
+    #define SPEED_1      5 
+    #define DIR_1        4
+     
+    #define SPEED_2      6
+    #define DIR_2        7
+     
+    void setup() {
+      // настраиваем выводы платы 4, 5, 6, 7 на вывод сигналов 
+      for (int i = 4; i < 8; i++) {     
+        pinMode(i, OUTPUT);
+      }
+    } 
+     
+    void loop() {
+      // устанавливаем направление мотора «M1» в одну сторону
+      digitalWrite(DIR_1, LOW);
+      // включаем мотор на максимальной скорости
+      analogWrite(SPEED_1, 255);
+
+
+      digitalWrite(DIR_2, HIGH);
+      // включаем мотор на максимальной скорости
+      analogWrite(SPEED_2, 255);
+      
+    }
+
+```
 
 
